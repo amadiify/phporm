@@ -1,0 +1,23 @@
+{
+    "name": "amadiify/phporm",
+    "description": "This package provides more flexibility working with mysql, sqlite and pgsql database systems in PHP out of the box.",
+    "type": "library",
+    "require-dev": {
+        "php": "^7.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "amadiify",
+            "email": "amadiify@protonmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Amadiify\\" : "DB/"
+        }
+    }
+}
