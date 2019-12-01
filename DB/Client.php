@@ -1,10 +1,10 @@
 <?php
 
-namespace Amadiify\DB;
+namespace Amadiify;
 
 // Open PDO for use
 use PDO;
-use Amadiify\DB\Handler as handler;
+use Amadiify\Handler as handler;
 
 /**
  * @package Moorexa Database engine

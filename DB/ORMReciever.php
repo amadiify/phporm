@@ -1,6 +1,6 @@
 <?php
 
-namespace Amadiify\DB;
+namespace Amadiify;
 
 /*
  * @package Orm Reciever for DB Class 
