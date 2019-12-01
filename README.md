@@ -37,7 +37,7 @@ Here is how the connection file looks like.
 
 Once this is done, you can **Use** this connection. see example: 
 ```php
-use Amadiify\DB\Client;
+use Amadiify\Client;
 ```
 
 ## Get Request
