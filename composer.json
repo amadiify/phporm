@@ -1,5 +1,5 @@
 {
-    "name": "amadiify/phporm",
+    "name": "amadiify/querydb",
     "description": "This package provides more flexibility working with mysql, sqlite and pgsql database systems in PHP out of the box.",
     "type": "library",
     "require-dev": {
