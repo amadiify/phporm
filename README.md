@@ -88,7 +88,83 @@ use Amadiify\Client;
     )->go();
     // or
     $table->insert('username,password')->bind('mack', '1234');
+    // or
+    $table->insert('username,password', 'mack', '1234');
     // or run a get after
     $table->insert('username,password')->bind('mack', '1234')->get(); // returns records.
+    $data = [
+
+        [
+            'username' => 'Moorexa',
+            'password' => 'hash-password'
+        ],
+
+        [
+            'username' => 'Wekiwork',
+            'password' => 'hash-password'
+        ]
+
+    ];
+    array_map(function($data){
+        Client::table('user')->insert($data);
+    }, $data);
+    // insert json data
+    $table->insert('{"username":"mike2", "password":"hash-password2"}');
+    // or insert an object
+    $object = (object) $data;
+    $table->insert($object); 
     // and much more..
+```
+
+## Update Request
+* You can run update easily, and chain other actions along side that request
+```php
+    // get table
+    $table = Client::table('user');
+    // update with json
+    $table->update('{"username":"chris", "id":3}', 'userid=?', 3);
+    // or 
+    $table->update('{"username":"chris", "id":3}')->where('userid=?', 3);
+    // or 
+    $table->update('{"username":"chris", "id":3}')->where('userid=?', 3);
+    // or
+    $table->update(['username' => 'chris'], 'userid = ?', 3);
+    // or
+    $table->update(['username' => 'moorexa'])->where('userid = ?')->bind(3);
+    // or
+    $get = $table->get('username = ?')->bind('chris');
+    // then update that row
+    $get->update(['telephone' => '080000000000']);
+    // and much more
+```
+
+## Delete Request
+* You can run delete queries easily and also chain other actions along side that request
+```php
+    // get table
+    $table = Client::table('user');
+    // update with json
+    $table->delete('userid = ?')->bind(30);
+    // or
+    $table->delete(['userid' => 3]);
+    // or
+    $get = $table->get('userid = ?', 2);
+    // then delete that row
+    $get->pop();
+    // and much more
+```
+
+## Raw sql
+* Raw sql statements are prepared also, lets see an example
+```php
+    Client::sql('select * from users where username = ?', 'chris');
+    // or
+    Client::sql('select * from users where username = :name')->bind('chris');
+    // or 
+    Client::sql('select * from users where username = "chris"');
+    // interpreted as 
+    // select * from users where username = :username
+    // or
+    $table = new Client();
+    $table->sql('Your query here.'); 
 ```
