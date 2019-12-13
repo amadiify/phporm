@@ -168,3 +168,13 @@ use Amadiify\Client;
     $table = new Client();
     $table->sql('Your query here.'); 
 ```
+
+## Switch database connection
+* You can switch to a different connection during run time. It's easy
+```php
+    $default = Client::serve();
+    $switch1 = Client::apply('database1');
+    // and other queries can be chained here
+```
+
+This is just an evaluation copy, You can do much more with this in Moorexa. You can share and contribute, thank you.
