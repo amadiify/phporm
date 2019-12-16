@@ -219,16 +219,16 @@ class Client
                 'delete' => 'DELETE FROM {table} {where}',
                 'select' => 'SELECT {column} FROM {table} {where}'
             ]
-        ];
-        
-        if (!is_null($driver))
-        {
-            return isset($queries[$driver]) ? $queries[$driver] : null;
-        }
-        else
-        {
-            return isset($queries[$this->driver]) ? $queries[$this->driver] : null;
-        }
+		];
+		
+		if (!is_null($driver))
+		{
+			return isset($queries[$driver]) ? $queries[$driver] : null;
+		}
+		else
+		{
+			return isset($queries[$this->driver]) ? $queries[$this->driver] : null;
+		}
     }
 
     // add static bind    
@@ -867,7 +867,7 @@ class Client
     public function _apply($dataName = null)
     {
        if (!is_null($dataName) && !empty($dataName))
-       {
+	   {
             if (isset(self::$openedConnection[$dataName]))
             {
                 $con = self::$openedConnection[$dataName];
@@ -878,9 +878,9 @@ class Client
 
                 return $con;
             }   
-            // switch connection
-            else
-            {
+			// switch connection
+			else
+			{
                 $driver = Handler::connectionConfig($dataName, 'driver');
                 // get allowed
                 $this->getAllowed();
@@ -915,10 +915,10 @@ class Client
                         throw new \Exception('Driver you used isn\'t supported on this server. Please see documentation');
                     }
                 }
-            }
-       }
+			}
+	   }
 
-       return $this;
+	   return $this;
     }
 
     // get table info
@@ -3089,6 +3089,29 @@ class Client
         $dec = json_decode($res, true);
 
         return $dec;
+    }
+
+
+    // convert array to object
+    public static function toObject($array)
+    {
+        $res = (object) [];
+
+        foreach ($array as $i => $x)
+        {
+            if (is_array($x))
+            {
+                $x = self::toObject($x);
+
+                $res->{$i} = (object) $x;
+            }
+            else
+            {
+                $res->{$i} = $x;
+            }
+        }
+
+        return $res;
     }
 }
 
