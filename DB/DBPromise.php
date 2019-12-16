@@ -305,7 +305,7 @@ class DBPromise
                 }
                 elseif (is_object($fetch))
                 {
-                    $toarr = toArray($fetch);
+                    $toarr = Client::toArray($fetch);
                     array_walk($toarr, function($e, $i) use (&$toarr){
                         $e = stripslashes($e);
                         $toarr[$i] = html_entity_decode($e, ENT_QUOTES, 'UTF-8');
@@ -327,7 +327,7 @@ class DBPromise
                 }
                 elseif (is_object($fetch))
                 {
-                    $toarr = toArray($fetch);
+                    $toarr = Client::toArray($fetch);
                     array_walk($toarr, function($e, $i) use (&$toarr){
                         $e = stripslashes($e);
                         $toarr[$i] = html_entity_decode($e, ENT_QUOTES, 'UTF-8');
