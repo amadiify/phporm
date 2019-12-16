@@ -317,7 +317,7 @@ class Client
         {
             if (is_object($data))
             {
-                $data = Client::toArray($data);
+                $data = toArray($data);
             }
 
             if (is_array($data))
@@ -1017,14 +1017,14 @@ class Client
             if (is_object($data))
             {
                 // convert to array
-                $data = Client::toArray($data);
+                $data = toArray($data);
             }
 
             // json data?
             if (is_string($data) && trim($data[0]) == '{' )
             {
                 // conver to an object
-                $data = Client::toArray(json_decode($data));
+                $data = toArray(json_decode($data));
             }
 
             if (is_array($data))
@@ -1112,14 +1112,14 @@ class Client
                             if (is_object($data))
                             {
                                 // convert to array
-                                $data = Client::toArray($data);
+                                $data = toArray($data);
                             }
                 
                             // json data?
                             if (is_string($data) && trim($data[0]) == '{' )
                             {
                                 // conver to an object
-                                $data = Client::toArray(json_decode($data));
+                                $data = toArray(json_decode($data));
                             }
 
                             if (is_array($data))
@@ -1240,14 +1240,14 @@ class Client
             if (is_object($data))
             {
                 // convert to array
-                $data = Client::toArray($data);
+                $data = toArray($data);
             }
 
             // json data?
             if (is_string($data) && trim($data[0]) == '{' )
             {
                 // conver to an object
-                $data = Client::toArray(json_decode($data));
+                $data = toArray(json_decode($data));
             }
 
             if (is_array($data))
@@ -1291,14 +1291,14 @@ class Client
                         if (is_object($data))
                         {
                             // convert to array
-                            $data = Client::toArray($data);
+                            $data = toArray($data);
                         }
             
                         // json data?
                         if (is_string($data) && trim($data[0]) == '{' )
                         {
                             // conver to an object
-                            $data = Client::toArray(json_decode($data));
+                            $data = toArray(json_decode($data));
                         }
 
                         $continue = true;
@@ -1481,14 +1481,14 @@ class Client
             if (is_object($data))
             {
                 // convert to array
-                $data = Client::toArray($data);
+                $data = toArray($data);
             }
 
             // json data?
             if (is_string($data) && trim($data[0]) == '{' )
             {
                 // conver to an object
-                $data = Client::toArray(json_decode($data));
+                $data = toArray(json_decode($data));
             }
 
             if (is_array($data))
@@ -1560,14 +1560,14 @@ class Client
                             if (is_object($data))
                             {
                                 // convert to array
-                                $data = Client::toArray($data);
+                                $data = toArray($data);
                             }
                 
                             // json data?
                             if (is_string($data) && trim($data[0]) == '{' )
                             {
                                 // conver to an object
-                                $data = Client::toArray(json_decode($data));
+                                $data = toArray(json_decode($data));
                             }
 
                             if (is_array($data))
@@ -1679,14 +1679,14 @@ class Client
             if (is_object($data))
             {
                 // convert to array
-                $data = Client::toArray($data);
+                $data = toArray($data);
             }
 
             // json data?
             if (is_string($data) && trim($data[0]) == '{' )
             {
                 // conver to an object
-                $data = Client::toArray(json_decode($data));
+                $data = toArray(json_decode($data));
             }
 
             // data passed is an array
@@ -1723,12 +1723,12 @@ class Client
                 {
                     if (is_object($a[0]))
                     {
-                        $a[0] = Client::toArray($a[0]);
+                        $a[0] = toArray($a[0]);
                     }
 
                     if (is_string($a[0]) && $a[0] == '{')
                     {
-                        $a[0] = Client::toArray(json_decode($a[0]));
+                        $a[0] = toArray(json_decode($a[0]));
                     }
 
                     if (is_array($a[0]))
@@ -1898,12 +1898,12 @@ class Client
             {
                 if (is_object($a[0]))
                 {
-                    $a[0] = Client::toArray($a[0]);
+                    $a[0] = toArray($a[0]);
                 }
 
                 if (is_string($a[0]) && $a[0] == '{')
                 {
-                    $a[0] = Client::toArray(json_decode($a[0]));
+                    $a[0] = toArray(json_decode($a[0]));
                 }
 
                 if (is_array($a[0]))
@@ -2543,8 +2543,6 @@ class Client
 
             default:
 
-                silenterror();
-
                 if (isset($this->allowed[$method]))
                 {
                     $allowed = $this->getAllowed($data, $this->query);
@@ -3068,17 +3066,6 @@ class Client
     private function callMethod($method, $data)
     {
         return call_user_func_array([$this, $method], $data);
-    }
-    
-    // convert object to array.
-    public static function toArray($object)
-    {
-        $res = [];
-
-        $res = json_encode($object);
-        $dec = json_decode($res, true);
-
-        return $dec;
     }
 }
 
