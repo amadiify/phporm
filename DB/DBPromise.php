@@ -310,7 +310,7 @@ class DBPromise
                         $e = stripslashes($e);
                         $toarr[$i] = html_entity_decode($e, ENT_QUOTES, 'UTF-8');
                     });
-                    $fetch = toObject($toarr);
+                    $fetch = Client::toObject($toarr);
                     $toarr = null;
                 }
             }
@@ -332,7 +332,7 @@ class DBPromise
                         $e = stripslashes($e);
                         $toarr[$i] = html_entity_decode($e, ENT_QUOTES, 'UTF-8');
                     });
-                    $fetch = toObject($toarr);
+                    $fetch = Client::toObject($toarr);
                 }
             }
             
