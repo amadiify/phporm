@@ -9,7 +9,7 @@ class FetchRow implements \ArrayAccess
 
     public function __construct(&$object, $fetch)
     {
-        $this->dd = is_object($fetch) ? toArray($fetch) : $fetch;
+        $this->dd = is_object($fetch) ? Client::toArray($fetch) : $fetch;
         $this->__ = $object;
     }
 
